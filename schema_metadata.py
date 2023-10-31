@@ -9,17 +9,17 @@ user_types = {user_columns['UserID']:'TEXT PRIMARY KEY', user_columns['Email']:'
               user_columns['LastUpdate']:'DATETIME'}
 
 # ------------------------------------------------------------
-item_table_name = 'Lounge'
-item_columns = {'LoungeID':'lounge_id', 'Name':'lounge_name', 'Country':'country',
-                'Coordinates':'coordinates', 'AirportID':'airport_id', }
-item_types = {item_columns['LoungeID']:'TEXT PRIMARY KEY', item_columns['Name']:'TEXT', item_columns['Country']:'TEXT',
-              item_columns['Coordinates']:'TEXT', item_columns['AirportID']:'TEXT'}
+lounge_table_name = 'Lounge'
+lounge_columns = {'LoungeID':'lounge_id', 'Name':'lounge_name', 'Country':'country',
+                'Coordinates':'coordinates', 'AirportID':'airport_id' }
+lounge_types = {lounge_columns['LoungeID']:'TEXT PRIMARY KEY', lounge_columns['Name']:'TEXT', lounge_columns['Country']:'TEXT',
+              lounge_columns['Coordinates']:'TEXT', lounge_columns['AirportID']:'TEXT'}
 
 # ------------------------------------------------------------
 tx_table_name= 'Transaction'
-tx_columns = {'TxID':'tx_id', 'UserID': user_columns['UserID'], 'ItemID': item_columns['ItemID'],
+tx_columns = {'TxID':'tx_id', 'UserID': user_columns['UserID'], 'LoungeID': lounge_columns['LoungeID'],
               'Status':'tx_status', 'TimeStamp':'time_stamp'}
-tx_types = {tx_columns['TxID']:'TEXT PRIMARY KEY', tx_columns['UserID']:'TEXT', tx_columns['ItemID']:'TEXT',
+tx_types = {tx_columns['TxID']:'TEXT PRIMARY KEY', tx_columns['UserID']:'TEXT', tx_columns['LoungeID']:'TEXT',
             tx_columns['Status']:'TEXT', tx_columns['TimeStamp']:'DATETIME'}
 
 # ------------------------------------------------------------
@@ -37,7 +37,7 @@ event_columns = {'EventID':'event_id', 'EventOwner': 'event_owner', 'EventName':
 event_types = {
             event_columns['EventID']:'TEXT PRIMARY KEY', event_columns['EventOwner']:'TEXT', event_columns['EventName']:'TEXT',
             event_columns['EventPartners']:'TEXT', event_columns['EventDuration']:'TEXT', event_columns['EventDescription']:'TEXT',
-            event_columns['TimeStamp']:'DATETIME'
+            event_columns['Event_DateTime']:'DATETIME', event_columns['LastUpdate']:'DATETIME'
             }
 
 # ------------------------------------------------------------
