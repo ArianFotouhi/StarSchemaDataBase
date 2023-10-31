@@ -1,31 +1,50 @@
 from utils import create_database_schema, insert_data_generic, fetch_transaction_data
 
 
-user_id = 'user4'
-item_id = 'item4'
-transaction_id='trans4'
+user_id = 'user1'
+item_id = 'item1'
+transaction_id='trans1'
 
-user_data = {'user_id': user_id, 'user_email': 'user1@example.com', 'user_password': 'password1'}
-item_data = {'item_id': item_id, 'item_price': 19.99, 'item_image_url': 'item1.jpg'}
-transaction_data = {'transaction_id': transaction_id, 'user_id': user_id, 'item_id': item_id}
+user_columns = {'UserID':'user_id', 'Email':'user_email', 'Password':'user_password'}
+item_columns = {'ItemID':'item_id', 'Price':'item_price', 'ImageURL':'item_image_url'}
+transaction_columns = {'TxID':'transaction_id', 'UserID': user_columns['UserID'], 'ItemID': item_columns['ItemID']}
 
+
+user_data = {user_columns['UserID']: user_id, 
+            user_columns['Email']: 'user1@example.com', 
+            user_columns['Password']: 'password1'}
+
+item_data = {item_columns['ItemID']: item_id, 
+            item_columns['Price']: 19.99,
+            item_columns['ImageURL']: 'item1.jpg'}
+
+transaction_data = {transaction_columns['TxID']: transaction_id,
+                     transaction_columns['UserID']: user_id, 
+                     transaction_columns['ItemID']: item_id}
 
 
 # Create the database schema
 create_database_schema(
     table_name='User',
-    columns={'user_id': 'TEXT PRIMARY KEY', 'user_email': 'TEXT', 'user_password': 'TEXT'}
+    columns={user_columns['UserID']: 'TEXT PRIMARY KEY', 
+             user_columns['Email']: 'TEXT', 
+             user_columns['Password']: 'TEXT'}
 )
 
 create_database_schema(
     table_name='Item',
-    columns={'item_id': 'TEXT PRIMARY KEY', 'item_price': 'REAL', 'item_image_url': 'TEXT'}
+    columns={item_columns['ItemID']: 'TEXT PRIMARY KEY',
+            item_columns['Price']: 'REAL',
+            item_columns['ImageURL']: 'TEXT'}
 )
 
 create_database_schema(
     table_name='Transaction',
-    columns={'transaction_id': 'TEXT PRIMARY KEY', 'user_id': 'TEXT', 'item_id': 'TEXT'},
-    foreign_keys={'user_id': 'User(user_id)', 'item_id': 'Item(item_id)'}
+    columns={transaction_columns['TxID']: 'TEXT PRIMARY KEY', 
+             transaction_columns['UserID']: 'TEXT', 
+             transaction_columns['ItemID']: 'TEXT'},
+    foreign_keys={transaction_columns['UserID']: f'User({user_columns["UserID"]})', 
+                  transaction_columns['ItemID']: f'Item({item_columns["ItemID"]})'}
 )
 
 

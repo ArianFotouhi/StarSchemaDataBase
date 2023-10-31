@@ -1,8 +1,8 @@
 import sqlite3
-
+db_name = 'database1.db'
 def create_database_schema(table_name, columns, foreign_keys=None):
     # Connect to the database (or create it if it doesn't exist)
-    conn = sqlite3.connect('database1.db')  # Create a new database file
+    conn = sqlite3.connect(db_name)  # Create a new database file
     cursor = conn.cursor()
 
     # Create the table with the provided name and columns
@@ -19,7 +19,7 @@ def create_database_schema(table_name, columns, foreign_keys=None):
 
 
 def insert_data_generic(table_name, data):
-    with sqlite3.connect('my_new_database.db') as conn:  # Use the new database file
+    with sqlite3.connect(db_name) as conn:  # Use the new database file
         cursor = conn.cursor()
         columns = ', '.join(data.keys())
         placeholders = ', '.join([':' + key for key in data.keys()])
@@ -29,7 +29,7 @@ def insert_data_generic(table_name, data):
         conn.commit()
 
 def fetch_transaction_data():
-    with sqlite3.connect('my_new_database.db') as conn:  # Use the new database file
+    with sqlite3.connect(db_name) as conn:  # Use the new database file
         cursor = conn.cursor()
         cursor.execute('''
             SELECT "T".transaction_id, "U".user_email, "I".item_price, "I".item_image_url
