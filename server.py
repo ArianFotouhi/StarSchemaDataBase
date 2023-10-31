@@ -38,11 +38,11 @@ create_database_schema(
 
 create_database_schema(
     table_name= tx_table_name,
-    columns={tx_columns['TxID']: tx_types[tx_columns['TxID']], 
+    columns= {tx_columns['TxID']: tx_types[tx_columns['TxID']], 
              tx_columns['UserID']: tx_types[tx_columns['UserID']], 
              tx_columns['ItemID']: tx_types[tx_columns['ItemID']]},
-             
-    foreign_keys={tx_columns['UserID']: f'User({user_columns["UserID"]})', 
+
+    foreign_keys= {tx_columns['UserID']: f'User({user_columns["UserID"]})', 
                   tx_columns['ItemID']: f'Item({item_columns["ItemID"]})'}
 )
 
