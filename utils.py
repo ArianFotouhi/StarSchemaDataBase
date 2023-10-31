@@ -1,6 +1,5 @@
 import sqlite3
-from schema_metadata import user_columns, item_columns, transaction_columns
-
+from schema_metadata import  user_table_name, item_table_name, tx_table_name, user_columns, item_columns, tx_columns
 
 db_name = 'database1.db'
 
@@ -37,10 +36,11 @@ def fetch_transaction_data():
     with sqlite3.connect(db_name) as conn:  # Use the new database file
         cursor = conn.cursor()
         cursor.execute(f'''
-            SELECT "T".{transaction_columns['TxID']}, "U".{user_columns['UserID']}, "I".{item_columns['Price']}, "I".{item_columns['ImageURL']}
-            FROM "Transaction" "T"
-            JOIN "User" "U" ON "T".{transaction_columns['UserID']} = "U".{user_columns['UserID']}
-            JOIN "Item" "I" ON "T".{transaction_columns['ItemID']} = "I".{item_columns['ItemID']}
+            SELECT "T".{tx_columns['TxID']}, "U".{user_columns['UserID']}, 
+            "I".{item_columns['Price']}, "I".{item_columns['ImageURL']}
+            FROM "{tx_table_name}" "T"
+            JOIN "{user_table_name}" "U" ON "T".{tx_columns['UserID']} = "U".{user_columns['UserID']}
+            JOIN "{item_table_name}" "I" ON "T".{tx_columns['ItemID']} = "I".{item_columns['ItemID']}
         ''')
         data = cursor.fetchall()
         return data
