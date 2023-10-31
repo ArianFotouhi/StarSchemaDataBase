@@ -1,13 +1,10 @@
 from utils import create_database_schema, insert_data_generic, fetch_transaction_data
+from schema_metadata import user_columns, item_columns, transaction_columns
 
+user_id = 'user3'
+item_id = 'item3'
+transaction_id='trans3'
 
-user_id = 'user1'
-item_id = 'item1'
-transaction_id='trans1'
-
-user_columns = {'UserID':'user_id', 'Email':'user_email', 'Password':'user_password'}
-item_columns = {'ItemID':'item_id', 'Price':'item_price', 'ImageURL':'item_image_url'}
-transaction_columns = {'TxID':'transaction_id', 'UserID': user_columns['UserID'], 'ItemID': item_columns['ItemID']}
 
 
 user_data = {user_columns['UserID']: user_id, 
