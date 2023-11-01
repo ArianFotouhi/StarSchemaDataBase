@@ -19,13 +19,44 @@ user_types = {
 # ------------------------------------------------------------
 lounge_table_name = 'Lounge'
 lounge_columns = {'LoungeID':'lounge_id', 'Name':'lounge_name', 'Country':'country',
-                'Coordinates':'coordinates', 'AirportID':'airport_id' }
+                'Coordinates':'coordinates', 'AirportID':'airport_id', 'Description':'description',
+                'TimeZone':'time_zone', 'LoungeType':'lounge_type','LoungeCapacityStatus':'capacity_status',
+                'AccessRequirements':'access_requirements', 'OperatingHours':'operate_hours','Amenities':'amenities',
+                'AccessibilityFeatures':'accessibility_features', 'Capacity':'capacity','EntryFee':'entry_fee',
+                'Email':'email', 'Tel':'tel_no','WebsiteURL':'website',
+                'SecurityInfo':'security_info', 'Reservation':'reservation','ActivityStatus':'activity_status',
+                'LastUpdate':'last_update', 'ImageURL':'image_url','SocialMediaLink':'social_media_link',
+                'Owner':'owner', 'OnSiteTransportation':'onsite_transportation'
+
+                    }
 lounge_types = {
             lounge_columns['LoungeID']:'INTEGER PRIMARY KEY AUTOINCREMENT', 
             lounge_columns['Name']:'TEXT', 
             lounge_columns['Country']:'TEXT',
             lounge_columns['Coordinates']:'TEXT', 
-            lounge_columns['AirportID']:'TEXT'
+            lounge_columns['AirportID']:'TEXT',
+
+            lounge_columns['Description']:'TEXT',
+            lounge_columns['TimeZone']:'TEXT', 
+            lounge_columns['LoungeType']:'TEXT',
+            lounge_columns['LoungeCapacityStatus']:'TEXT',
+            lounge_columns['AccessRequirements']:'TEXT',
+            lounge_columns['OperatingHours']:'TEXT',
+            lounge_columns['Amenities']:'TEXT',
+            lounge_columns['AccessibilityFeatures']:'TEXT',
+            lounge_columns['Capacity']:'INTEGER',
+            lounge_columns['EntryFee']:'NUMERIC',
+            lounge_columns['Email']:'TEXT',
+            lounge_columns['Tel']:'TEXT',
+            lounge_columns['WebsiteURL']:'TEXT',
+            lounge_columns['SecurityInfo']:'TEXT',
+            lounge_columns['Reservation']:'TEXT',
+            lounge_columns['ActivityStatus']:'TEXT',
+            lounge_columns['LastUpdate']:'DATETIME',
+            lounge_columns['ImageURL']:'TEXT',
+            lounge_columns['SocialMediaLink']:'TEXT',
+            lounge_columns['Owner']:'TEXT',
+            lounge_columns['OnSiteTransportation']:'TEXT',
             }
 
 # ------------------------------------------------------------
@@ -85,7 +116,7 @@ amenity_types = {
 airport_table_name= 'Airport'
 airport_columns = {'IATACode':'IATA_code', 'AirportName':'airport_name' ,'Country': 'country', 'City': 'city',
                     'Coordinates':'coordinates', 'Region': 'region', 'ImageURL':'image_url',
-                    'LocationTimeZone':'time_zone'}
+                    }
 airport_types = {
             airport_columns['IATACode']:'TEXT PRIMARY KEY', 
             airport_columns['AirportName']:'TEXT', 
@@ -94,5 +125,4 @@ airport_types = {
             airport_columns['Coordinates']:'TEXT', 
             airport_columns['Region']:'TEXT',
             airport_columns['ImageURL']:'TEXT', 
-            airport_columns['LocationTimeZone']:'TEXT'
                 }

@@ -23,10 +23,32 @@ user_data = {
 
 lounge_data = {
             # lounge_columns['LoungeID']: lounge_id, 
-            lounge_columns['Name']: 'YYL int',
+            lounge_columns['Name']: 'YYZ int',
             lounge_columns['Country']:'Canada',
             lounge_columns['Coordinates']: '49.68 -79.61',
-            lounge_columns['AirportID']: 'YYL',
+            lounge_columns['AirportID']: 'YYZ',
+
+            lounge_columns['Description']:'international lounge of Toronto Airport',
+            lounge_columns['TimeZone']:'-4', 
+            lounge_columns['LoungeType']:'Departure Business Class',
+            lounge_columns['LoungeCapacityStatus']:'Available',
+            lounge_columns['AccessRequirements']:'Open to everyone',
+            lounge_columns['OperatingHours']:'9:00 - 23:00',
+            lounge_columns['Amenities']:'[1,4,2,5,7]',
+            lounge_columns['AccessibilityFeatures']:'Wheelchair-accessible',
+            lounge_columns['Capacity']:50,
+            lounge_columns['EntryFee']:39.99,
+            lounge_columns['Email']:'lounge_yyz_int@yyz.com',
+            lounge_columns['Tel']:'+16471238899',
+            lounge_columns['WebsiteURL']:'a@abc.com',
+            lounge_columns['SecurityInfo']:'Baggage Checking',
+            lounge_columns['Reservation']:'required',
+            lounge_columns['ActivityStatus']:'Active',
+            lounge_columns['LastUpdate']:'15-02-2023 10:00:04',
+            lounge_columns['ImageURL']:'https://example.com',
+            lounge_columns['SocialMediaLink']:'https://facebook.com/lounge',
+            lounge_columns['Owner']:'YYZ',
+            lounge_columns['OnSiteTransportation']:'Shuttle Service',
 
             }
 
@@ -77,5 +99,4 @@ airport_data = {
             airport_columns['Coordinates']:'49.68 -79.60', 
             airport_columns['Region']:'North America',
             airport_columns['ImageURL']:'https://example.com', 
-            airport_columns['LocationTimeZone']:'-4'
             }
