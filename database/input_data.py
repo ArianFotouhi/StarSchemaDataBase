@@ -1,4 +1,5 @@
-from database.schema_metadata import  user_columns, lounge_columns, tx_columns
+from database.schema_metadata import  (user_columns, lounge_columns, tx_columns,
+                                        country_columns, event_columns,)
                                
 
 user_id = 'user4'
@@ -17,14 +18,39 @@ user_data = {
 
             user_columns['Tel']: '1234567890',
             user_columns['CreationDateTime']: '22-10-2023 10:55:11',
+            user_columns['UserStatus']: 'Active',
+            user_columns['LastUpdate']: '28-10-2023 14:15:10',
 
             }
 
 lounge_data = {lounge_columns['LoungeID']: lounge_id, 
             lounge_columns['Name']: 'YYL int',
-            lounge_columns['AirportID']: 'YYL'}
+            lounge_columns['Country']:'Canada',
+            lounge_columns['Coordinates']: '49.68 -79.61',
+            lounge_columns['AirportID']: 'YYL',
+
+            }
+
 
 tx_data = {tx_columns['TxID']: transaction_id,
                      tx_columns['UserID']: user_id, 
-                     tx_columns['LoungeID']: lounge_id}
+                     tx_columns['LoungeID']: lounge_id,
+                     tx_columns['Status']: 'Successful',
+                     tx_columns['TimeStamp']: '30-10-2023 08:15:15',
+                     }
 
+
+country_data = {country_columns['CountryName']: 'Canada',
+                     country_columns['Currency']: 'CAD', 
+                     country_columns['Language']: 'English/French',
+                     country_columns['TelCode']: '+1',
+                     country_columns['FlagImageURL']: 'https://example.com',
+                     country_columns['TimeStamp']: '30-10-2023 08:15:15',
+                     }
+
+
+even_data = {
+            event_columns['EventID']:'1234512345', event_columns['EventOwner']:'YYZ int lounge', event_columns['EventName']:'Canada Day',
+            event_columns['EventPartners']:'YUL airport', event_columns['EventDuration']:'90min', event_columns['EventDescription']:'Special meals for Canada Day',
+            event_columns['Event_DateTime']:'01-07-2024 10:00:00', event_columns['LastUpdate']:'30-10-2023 12:11:11'
+            }
