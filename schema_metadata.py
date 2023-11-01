@@ -12,7 +12,7 @@ user_types = {user_columns['UserID']:'TEXT PRIMARY KEY', user_columns['Email']:'
 lounge_table_name = 'Lounge'
 lounge_columns = {'LoungeID':'lounge_id', 'Name':'lounge_name', 'Country':'country',
                 'Coordinates':'coordinates', 'AirportID':'airport_id' }
-lounge_types = {lounge_columns['LoungeID']:'TEXT PRIMARY KEY', lounge_columns['Name']:'TEXT', lounge_columns['Country']:'TEXT',
+lounge_types = {lounge_columns['LoungeID']:'TEXT', lounge_columns['Name']:'TEXT', lounge_columns['Country']:'TEXT',
               lounge_columns['Coordinates']:'TEXT', lounge_columns['AirportID']:'TEXT'}
 
 # ------------------------------------------------------------
