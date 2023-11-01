@@ -1,11 +1,11 @@
 from utils.utils import create_database_schema, insert_data_generic, fetch_transaction_data, fetch_table
 from database.schema_metadata import  (
-    user_table_name, lounge_table_name, tx_table_name, country_table_name, event_table_name, amenity_table_name,
-                               user_columns, lounge_columns, tx_columns, country_columns, event_columns, amenity_columns,
-                               user_types, lounge_types, tx_types,country_types, event_types, amenity_types
+    user_table_name, lounge_table_name, tx_table_name, country_table_name, event_table_name, amenity_table_name, airport_table_name,
+                               user_columns, lounge_columns, tx_columns, country_columns, event_columns, amenity_columns, airport_columns,
+                               user_types, lounge_types, tx_types,country_types, event_types, amenity_types, airport_types,
                                )
 
-from database.input_data import user_data, lounge_data, tx_data, country_data, even_data, amenity_data
+from database.input_data import user_data, lounge_data, tx_data, country_data, even_data, amenity_data, airport_data
 
 
 # Create the database schema
@@ -61,6 +61,14 @@ create_database_schema(
     columns= columns
 )
 # ----------------------------------------
+columns= {}
+for i in airport_columns:
+    columns[airport_columns[i]] = airport_types[airport_columns[i]]
+create_database_schema(
+    table_name= airport_table_name,
+    columns= columns
+)
+# ----------------------------------------
 
 
 
@@ -78,6 +86,9 @@ insert_data_generic(event_table_name, even_data)
 # ----------------------------------------
 insert_data_generic(amenity_table_name, amenity_data)
 # ----------------------------------------
+insert_data_generic(airport_table_name, airport_data)
+# ----------------------------------------
+
 
 # Fetch and print transaction data
 # transaction_records = fetch_transaction_data()
@@ -102,5 +113,10 @@ for record in fetched_data:
 
 print(15*'-'+f'{amenity_table_name}'+15*'-')
 fetched_data = fetch_table(amenity_table_name)
+for record in fetched_data:
+    print(record)
+
+print(15*'-'+f'{airport_table_name}'+15*'-')
+fetched_data = fetch_table(airport_table_name)
 for record in fetched_data:
     print(record)

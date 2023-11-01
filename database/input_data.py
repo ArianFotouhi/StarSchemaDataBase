@@ -1,5 +1,5 @@
 from database.schema_metadata import  (user_columns, lounge_columns, tx_columns,
-                                        country_columns, event_columns,amenity_columns)
+                                        country_columns, event_columns,amenity_columns, airport_columns)
                                
 
 user_id = 'user4'
@@ -58,4 +58,10 @@ even_data = {
 amenity_data = {
             amenity_columns['AmenityID']:'987654321', amenity_columns['AmenityStatus']:'Active', amenity_columns['AmenityName']:'Hot Meal',
             amenity_columns['ImageURL']:'https://exampleurl.com',  amenity_columns['LastUpdate']:'15-10-2023 18:30:04'        
-}
+            }
+
+airport_data = {
+            airport_columns['IATACode']:'YYZ', airport_columns['AirportName']:'Toronto Pearson International Airport', airport_columns['Country']:'Canada',
+            airport_columns['City']:'Toronto',  airport_columns['Coordinates']:'49.68 -79.60', airport_columns['Region']:'North America',
+            airport_columns['ImageURL']:'https://example.com', airport_columns['LocationTimeZone']:'-4'
+            }

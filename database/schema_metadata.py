@@ -54,6 +54,8 @@ airport_table_name= 'Airport'
 airport_columns = {'IATACode':'IATA_code', 'AirportName':'airport_name' ,'Country': 'country', 'City': 'city',
                     'Coordinates':'coordinates', 'Region': 'region', 'ImageURL':'image_url',
                     'LocationTimeZone':'time_zone'}
-airport_types = {airport_columns['IATACode']:'TEXT PRIMARY KEY', airport_columns['AirportName']:'TEXT', airport_columns['Country']:'TEXT',
+airport_types = {
+            airport_columns['IATACode']:'TEXT PRIMARY KEY', airport_columns['AirportName']:'TEXT', airport_columns['Country']:'TEXT',
             airport_columns['City']:'TEXT',  airport_columns['Coordinates']:'TEXT', airport_columns['Region']:'TEXT',
-            airport_columns['ImageURL']:'TEXT', airport_columns['LocationTimeZone']:'TEXT'}
+            airport_columns['ImageURL']:'TEXT', airport_columns['LocationTimeZone']:'TEXT'
+                }
