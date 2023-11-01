@@ -44,8 +44,10 @@ event_types = {
 amenity_table_name= 'Amenities'
 amenity_columns = {'AmenityID':'amenity_id', 'AmenityStatus': 'amenity_status', 'AmenityName': 'amenity_name',
                     'ImageURL':'image_url', 'LastUpdate':'last_update'}
-amenity_types = {amenity_columns['AmenityID']:'TEXT PRIMARY KEY', amenity_columns['AmenityStatus']:'TEXT', amenity_columns['AmenityName']:'TEXT',
-            amenity_columns['ImageURL']:'TEXT',  amenity_columns['LastUpdate']:'DATETIME'}
+amenity_types = {
+            amenity_columns['AmenityID']:'TEXT PRIMARY KEY', amenity_columns['AmenityStatus']:'TEXT', amenity_columns['AmenityName']:'TEXT',
+            amenity_columns['ImageURL']:'TEXT',  amenity_columns['LastUpdate']:'DATETIME'
+            }
 
 # ------------------------------------------------------------
 airport_table_name= 'Airport'

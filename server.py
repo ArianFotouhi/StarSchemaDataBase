@@ -1,11 +1,11 @@
 from utils.utils import create_database_schema, insert_data_generic, fetch_transaction_data, fetch_table
 from database.schema_metadata import  (
-    user_table_name, lounge_table_name, tx_table_name, country_table_name, event_table_name,
-                               user_columns, lounge_columns, tx_columns, country_columns, event_columns,
-                               user_types, lounge_types, tx_types,country_types, event_types
+    user_table_name, lounge_table_name, tx_table_name, country_table_name, event_table_name, amenity_table_name,
+                               user_columns, lounge_columns, tx_columns, country_columns, event_columns, amenity_columns,
+                               user_types, lounge_types, tx_types,country_types, event_types, amenity_types
                                )
 
-from database.input_data import user_data, lounge_data, tx_data, country_data, even_data
+from database.input_data import user_data, lounge_data, tx_data, country_data, even_data, amenity_data
 
 
 # Create the database schema
@@ -53,6 +53,15 @@ create_database_schema(
     columns= columns
 )
 # ----------------------------------------
+columns= {}
+for i in amenity_columns:
+    columns[amenity_columns[i]] = amenity_types[amenity_columns[i]]
+create_database_schema(
+    table_name= amenity_table_name,
+    columns= columns
+)
+# ----------------------------------------
+
 
 
 # Insert data
@@ -67,7 +76,8 @@ insert_data_generic(country_table_name, country_data)
 # ----------------------------------------
 insert_data_generic(event_table_name, even_data)
 # ----------------------------------------
-
+insert_data_generic(amenity_table_name, amenity_data)
+# ----------------------------------------
 
 # Fetch and print transaction data
 # transaction_records = fetch_transaction_data()
@@ -90,3 +100,7 @@ fetched_data = fetch_table(event_table_name)
 for record in fetched_data:
     print(record)
 
+print(15*'-'+f'{amenity_table_name}'+15*'-')
+fetched_data = fetch_table(amenity_table_name)
+for record in fetched_data:
+    print(record)

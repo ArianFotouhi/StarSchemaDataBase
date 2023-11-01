@@ -1,5 +1,5 @@
 from database.schema_metadata import  (user_columns, lounge_columns, tx_columns,
-                                        country_columns, event_columns,)
+                                        country_columns, event_columns,amenity_columns)
                                
 
 user_id = 'user4'
@@ -54,3 +54,8 @@ even_data = {
             event_columns['EventPartners']:'YUL airport', event_columns['EventDuration']:'90min', event_columns['EventDescription']:'Special meals for Canada Day',
             event_columns['Event_DateTime']:'01-07-2024 10:00:00', event_columns['LastUpdate']:'30-10-2023 12:11:11'
             }
+
+amenity_data = {
+            amenity_columns['AmenityID']:'987654321', amenity_columns['AmenityStatus']:'Active', amenity_columns['AmenityName']:'Hot Meal',
+            amenity_columns['ImageURL']:'https://exampleurl.com',  amenity_columns['LastUpdate']:'15-10-2023 18:30:04'        
+}
