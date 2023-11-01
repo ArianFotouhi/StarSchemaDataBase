@@ -73,11 +73,12 @@ tx_types = {
 
 # ------------------------------------------------------------
 country_table_name= 'Country'
-country_columns = {'CountryName':'name', 'Currency': 'currency', 'Language': 'language',
+country_columns = {'CountryName':'name', 'Currency': 'currency', 'Coordinates':'coordinates', 'Language': 'language',
                     'TelCode':'telephone_code', 'FlagImageURL':'flag_image_url', 'TimeStamp':'time_stamp'}
 country_types = {
                 country_columns['CountryName']:'TEXT PRIMARY KEY', 
                 country_columns['Currency']:'TEXT', 
+                country_columns['Coordinates']:'TEXT', 
                 country_columns['Language']:'TEXT',
                 country_columns['TelCode']:'TEXT', 
                 country_columns['FlagImageURL']:'TEXT', 

@@ -65,6 +65,7 @@ tx_data = {
 country_data = {
             country_columns['CountryName']: 'Canada',
             country_columns['Currency']: 'CAD', 
+            country_columns['Coordinates']: '62.22, -105.38',
             country_columns['Language']: 'English/French',
             country_columns['TelCode']: '+1',
             country_columns['FlagImageURL']: 'https://example.com',
@@ -96,7 +97,7 @@ airport_data = {
             airport_columns['AirportName']:'Toronto Pearson International Airport', 
             airport_columns['Country']:'Canada',
             airport_columns['City']:'Toronto',  
-            airport_columns['Coordinates']:'49.68 -79.60', 
+            airport_columns['Coordinates']:'49.68, -79.60', 
             airport_columns['Region']:'North America',
             airport_columns['ImageURL']:'https://example.com', 
             }
