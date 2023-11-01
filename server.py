@@ -101,6 +101,16 @@ fetched_data = fetch_table(user_table_name)
 for record in fetched_data:
     print(record)
 
+print(15*'-'+f'{lounge_table_name}'+15*'-')
+fetched_data = fetch_table(lounge_table_name)
+for record in fetched_data:
+    print(record)
+
+print(15*'-'+f'{tx_table_name}'+15*'-')
+fetched_data = fetch_table(tx_table_name)
+for record in fetched_data:
+    print(record)
+
 print(15*'-'+f'{country_table_name}'+15*'-')
 fetched_data = fetch_table(country_table_name)
 for record in fetched_data:
