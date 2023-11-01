@@ -1,5 +1,6 @@
 from database.schema_metadata import  (user_columns, lounge_columns, tx_columns,
-                                        country_columns, event_columns,amenity_columns, airport_columns)
+                                        country_columns, event_columns,amenity_columns, 
+                                        airport_columns)
                                
 
 # user_id = 'user4'
@@ -18,7 +19,6 @@ user_data = {
             user_columns['CreationDateTime']: '22-10-2023 10:55:11',
             user_columns['UserStatus']: 'Active',
             user_columns['LastUpdate']: '28-10-2023 14:15:10',
-
             }
 
 lounge_data = {
@@ -49,7 +49,6 @@ lounge_data = {
             lounge_columns['SocialMediaLink']:'https://facebook.com/lounge',
             lounge_columns['Owner']:'YYZ',
             lounge_columns['OnSiteTransportation']:'Shuttle Service',
-
             }
 
 

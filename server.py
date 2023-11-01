@@ -8,8 +8,10 @@ from database.schema_metadata import  (
 from database.input_data import user_data, lounge_data, tx_data, country_data, even_data, amenity_data, airport_data
 
 
+
+
 # Create the database schema
-# ----------------------------------------
+
 columns= {}
 for i in user_columns:
     columns[user_columns[i]] = user_types[user_columns[i]]
@@ -73,7 +75,7 @@ create_database_schema(
 
 
 # Insert data
-# ----------------------------------------
+
 insert_data_generic(user_table_name, user_data)
 # ----------------------------------------
 insert_data_generic(lounge_table_name, lounge_data)
