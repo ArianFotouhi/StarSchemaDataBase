@@ -1,5 +1,5 @@
 import sqlite3
-from schema_metadata import ( user_table_name, lounge_table_name, tx_table_name,
+from database.schema_metadata import ( user_table_name, lounge_table_name, tx_table_name,
                               user_columns, lounge_columns, tx_columns)
 
 db_name = 'database1.db'
