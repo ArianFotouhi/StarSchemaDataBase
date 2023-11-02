@@ -1,6 +1,6 @@
 import sqlite3
-from database.schema_metadata import ( user_table_name, lounge_table_name, tx_table_name,
-                              user_columns, lounge_columns, tx_columns)
+# from database.schema_metadata import ( user_table_name, lounge_table_name, tx_table_name,
+#                               user_columns, lounge_columns, tx_columns)
 
 db_name = 'database1.db'
 
@@ -33,18 +33,18 @@ def insert_data_generic(table_name, data):
         conn.commit()
 
 
-def fetch_transaction_data():
-    with sqlite3.connect(db_name) as conn:  # Use the new database file
-        cursor = conn.cursor()
-        cursor.execute(f'''
-            SELECT "T".{tx_columns['TxID']}, "U".{user_columns['UserID']}, 
-            "I".{lounge_columns['Name']}, "I".{lounge_columns['AirportID']}
-            FROM "{tx_table_name}" "T"
-            JOIN "{user_table_name}" "U" ON "T".{tx_columns['UserID']} = "U".{user_columns['UserID']}
-            JOIN "{lounge_table_name}" "I" ON "T".{tx_columns['LoungeID']} = "I".{lounge_columns['LoungeID']}
-        ''')
-        data = cursor.fetchall()
-        return data
+# def fetch_transaction_data():
+#     with sqlite3.connect(db_name) as conn:  # Use the new database file
+#         cursor = conn.cursor()
+#         cursor.execute(f'''
+#             SELECT "T".{tx_columns['TxID']}, "U".{user_columns['UserID']}, 
+#             "I".{lounge_columns['Name']}, "I".{lounge_columns['AirportID']}
+#             FROM "{tx_table_name}" "T"
+#             JOIN "{user_table_name}" "U" ON "T".{tx_columns['UserID']} = "U".{user_columns['UserID']}
+#             JOIN "{lounge_table_name}" "I" ON "T".{tx_columns['LoungeID']} = "I".{lounge_columns['LoungeID']}
+#         ''')
+#         data = cursor.fetchall()
+#         return data
     
 def fetch_table(table_name):
     with sqlite3.connect(db_name) as conn:  # Use the new database file
