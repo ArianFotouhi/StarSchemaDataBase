@@ -27,9 +27,9 @@ payload = user_data
 # url = 'http://127.0.0.1:5000/upload/airport'
 # payload = airport_data
 
-# response = requests.post(url, data=payload)
+response = requests.post(url, data=payload)
 
-url = 'http://127.0.0.1:5000/get_table/User'
-response = requests.get(url)
+# url = 'http://127.0.0.1:5000/get_table/User'
+# response = requests.get(url)
 
 print(response.json())
