@@ -18,6 +18,7 @@ user_data = {
             user_columns['CreationDateTime']: '22-10-2023 10:55:11',
             user_columns['UserStatus']: 'Active',
             user_columns['LastUpdate']: '28-10-2023 14:15:10',
+            'token':'generatedtoken'
             }
 
 lounge_data = {

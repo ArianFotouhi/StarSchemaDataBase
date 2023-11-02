@@ -50,10 +50,12 @@ def user_post():
 
     data = request.get_data()
     data = dict(urllib.parse.parse_qsl(data.decode()))
-
+    token =data.pop('token')
     # print('data', data_dict)
     # print('type', type(data_dict))
     try:
+        if token != 'generatedtoken':
+            raise 'Unathorized access!'
         insert_data_generic(user_table_name, data)        
 
         fetched_data = fetch_table(user_table_name)
