@@ -19,51 +19,29 @@ db_initializer()
 
 # @app.route('/')
 # def index():
-#     # Insert data
-    
-#     # ----------------------------------------
-#     insert_data_generic(lounge_table_name, lounge_data)
-#     # ----------------------------------------
-#     insert_data_generic(tx_table_name, tx_data)
-#     # ----------------------------------------
-#     insert_data_generic(country_table_name, country_data)
-#     # ----------------------------------------
-#     insert_data_generic(event_table_name, even_data)
-#     # ----------------------------------------
-#     insert_data_generic(amenity_table_name, amenity_data)
-#     # ----------------------------------------
-#     insert_data_generic(airport_table_name, airport_data)
-#     # ----------------------------------------
 
 
 
-
-#     print(15*'-'+f'{lounge_table_name}'+15*'-')
 #     fetched_data = fetch_table(lounge_table_name)
 #     for record in fetched_data:
 #         print(record)
 
-#     print(15*'-'+f'{tx_table_name}'+15*'-')
 #     fetched_data = fetch_table(tx_table_name)
 #     for record in fetched_data:
 #         print(record)
 
-#     print(15*'-'+f'{country_table_name}'+15*'-')
 #     fetched_data = fetch_table(country_table_name)
 #     for record in fetched_data:
 #         print(record)
 
-#     print(15*'-'+f'{event_table_name}'+15*'-')
 #     fetched_data = fetch_table(event_table_name)
 #     for record in fetched_data:
 #         print(record)
 
-#     print(15*'-'+f'{amenity_table_name}'+15*'-')
 #     fetched_data = fetch_table(amenity_table_name)
 #     for record in fetched_data:
 #         print(record)
 
-#     print(15*'-'+f'{airport_table_name}'+15*'-')
 #     fetched_data = fetch_table(airport_table_name)
 #     for record in fetched_data:
 #         print(record)
@@ -91,5 +69,123 @@ def user_post():
         print(message)
         return jsonify({'response':message})
     
+@app.route('/upload/lounge', methods=['POST'])
+def lounge_post():
+
+    data = request.get_data()
+    data = dict(urllib.parse.parse_qsl(data.decode()))
+
+
+    try:
+        insert_data_generic(lounge_table_name, data)        
+
+        fetched_data = fetch_table(lounge_table_name)
+        for record in fetched_data:
+            print(record)
+        message = 'Successful'
+    except Exception as e:
+        message = e
+    finally:
+        print(message)
+        return jsonify({'response':message})
+
+@app.route('/upload/transaction', methods=['POST'])
+def tx_post():
+
+    data = request.get_data()
+    data = dict(urllib.parse.parse_qsl(data.decode()))
+
+
+    try:
+        insert_data_generic(tx_table_name, data)        
+
+        fetched_data = fetch_table(tx_table_name)
+        for record in fetched_data:
+            print(record)
+        message = 'Successful'
+    except Exception as e:
+        message = e
+    finally:
+        print(message)
+        return jsonify({'response':message})
+
+@app.route('/upload/country', methods=['POST'])
+def country_post():
+
+    data = request.get_data()
+    data = dict(urllib.parse.parse_qsl(data.decode()))
+
+
+    try:
+        insert_data_generic(country_table_name, data)        
+
+        fetched_data = fetch_table(country_table_name)
+        for record in fetched_data:
+            print(record)
+        message = 'Successful'
+    except Exception as e:
+        message = e
+    finally:
+        print(message)
+        return jsonify({'response':message})
+
+@app.route('/upload/event', methods=['POST'])
+def event_post():
+
+    data = request.get_data()
+    data = dict(urllib.parse.parse_qsl(data.decode()))
+
+
+    try:
+        insert_data_generic(event_table_name, data)        
+
+        fetched_data = fetch_table(event_table_name)
+        for record in fetched_data:
+            print(record)
+        message = 'Successful'
+    except Exception as e:
+        message = e
+    finally:
+        print(message)
+        return jsonify({'response':message})
+
+@app.route('/upload/amenity', methods=['POST'])
+def amenity_post():
+
+    data = request.get_data()
+    data = dict(urllib.parse.parse_qsl(data.decode()))
+
+    try:
+        insert_data_generic(amenity_table_name, data)        
+
+        fetched_data = fetch_table(amenity_table_name)
+        for record in fetched_data:
+            print(record)
+        message = 'Successful'
+    except Exception as e:
+        message = e
+    finally:
+        print(message)
+        return jsonify({'response':message})
+
+@app.route('/upload/airport', methods=['POST'])
+def airport_post():
+
+    data = request.get_data()
+    data = dict(urllib.parse.parse_qsl(data.decode()))
+
+    try:
+        insert_data_generic(airport_table_name, data)        
+
+        fetched_data = fetch_table(airport_table_name)
+        for record in fetched_data:
+            print(record)
+        message = 'Successful'
+    except Exception as e:
+        message = e
+    finally:
+        print(message)
+        return jsonify({'response':message})
+
 if __name__ == "__main__":
     app.run()

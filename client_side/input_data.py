@@ -71,7 +71,7 @@ country_data = {
             }
 
 
-even_data = {
+event_data = {
             # event_columns['EventID']:'1234512345', 
             event_columns['EventOwner']:'YYZ int lounge', 
             event_columns['EventName']:'Canada Day',
