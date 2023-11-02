@@ -18,7 +18,7 @@ db_initializer()
 
 
 @app.route('/get_table/<table_name>')
-def index(table_name):
+def fetch_data(table_name):
     try:
         fetched_data = fetch_table(table_name)
         fetch_info = []
@@ -28,6 +28,22 @@ def index(table_name):
         fetch_info = 'Unsuccessful'
     
     return jsonify({'data':fetch_info})
+
+@app.route('/authentication', methods=['POST'])
+def authentication():
+    username = 'admin'
+    password = '123456'
+    form_username = request.form['username']
+    form_password = request.form['password']
+    
+
+    if username == form_username and password == form_password:
+        message = 'generatedtoken'
+        status = True
+    else:
+        message = 'Username and Password do not match!'
+        status = False
+    return jsonify({'message':message, 'status':status})
 
 @app.route('/upload/user', methods=['POST'])
 def user_post():
