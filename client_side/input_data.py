@@ -1,8 +1,7 @@
-from database.schema_metadata import  (user_columns, lounge_columns, tx_columns,
+from schema_metadata_cl import (user_columns, lounge_columns, tx_columns,
                                         country_columns, event_columns,amenity_columns, 
-                                        airport_columns)
-                               
 
+                                        airport_columns)
 # user_id = 'user4'
 # lounge_id = 'item4'
 # transaction_id ='trans4'
