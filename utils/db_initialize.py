@@ -4,7 +4,7 @@ from database.schema_metadata import  (
                                user_columns, lounge_columns, tx_columns, country_columns, event_columns, amenity_columns, airport_columns,
                                user_types, lounge_types, tx_types,country_types, event_types, amenity_types, airport_types,
                                )
-def db_initilizer():
+def db_initializer():
     # Create the database schema
     columns= {}
     for i in user_columns:
