@@ -17,36 +17,17 @@ db_initializer()
 
 
 
-# @app.route('/')
-# def index():
-
-
-
-#     fetched_data = fetch_table(lounge_table_name)
-#     for record in fetched_data:
-#         print(record)
-
-#     fetched_data = fetch_table(tx_table_name)
-#     for record in fetched_data:
-#         print(record)
-
-#     fetched_data = fetch_table(country_table_name)
-#     for record in fetched_data:
-#         print(record)
-
-#     fetched_data = fetch_table(event_table_name)
-#     for record in fetched_data:
-#         print(record)
-
-#     fetched_data = fetch_table(amenity_table_name)
-#     for record in fetched_data:
-#         print(record)
-
-#     fetched_data = fetch_table(airport_table_name)
-#     for record in fetched_data:
-#         print(record)
-
-#     return jsonify({'data':'Successful!'})
+@app.route('/get_table/<table_name>')
+def index(table_name):
+    try:
+        fetched_data = fetch_table(table_name)
+        fetch_info = []
+        for record in fetched_data:
+            fetch_info.append(record)
+    except:
+        fetch_info = 'Unsuccessful'
+    
+    return jsonify({'data':fetch_info})
 
 @app.route('/upload/user', methods=['POST'])
 def user_post():

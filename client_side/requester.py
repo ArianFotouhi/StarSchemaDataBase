@@ -6,8 +6,8 @@ from input_data import (user_data, lounge_data, tx_data,
 
 # url= 'https://iegapp.pythonanywhere.com/geo/'
 
-# url = 'http://127.0.0.1:5000/upload/user'
-# payload = user_data
+url = 'http://127.0.0.1:5000/upload/user'
+payload = user_data
 
 # url = 'http://127.0.0.1:5000/upload/lounge'
 # payload = lounge_data
@@ -24,12 +24,12 @@ from input_data import (user_data, lounge_data, tx_data,
 # url = 'http://127.0.0.1:5000/upload/amenity'
 # payload = amenity_data
 
-url = 'http://127.0.0.1:5000/upload/airport'
-payload = airport_data
+# url = 'http://127.0.0.1:5000/upload/airport'
+# payload = airport_data
 
-response = requests.post(url, data=payload)
+# response = requests.post(url, data=payload)
 
-url = 'http://127.0.0.1:5000/'
-# response = requests.get(url)
+url = 'http://127.0.0.1:5000/get_table/User'
+response = requests.get(url)
 
 print(response.json())
