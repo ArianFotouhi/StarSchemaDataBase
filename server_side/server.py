@@ -71,7 +71,7 @@ def user_post():
     except Exception as e:
         message = f'Data Upload failed due to: {e}'
     
-    return jsonify({'response': message})
+    return jsonify({'data': message})
     
 @app.route('/upload/lounge', methods=['POST'])
 def lounge_post():

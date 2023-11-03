@@ -61,7 +61,7 @@ def fetch_table(table_name):
     
 
 def fetch_columns(table_name):
-    engine = create_engine('sqlite:///'+db_name)
+    engine = create_engine('sqlite:///' + db_name)
     inspector = inspect(engine)
     if table_name not in inspector.get_table_names():
         return 'Error: Table not found'

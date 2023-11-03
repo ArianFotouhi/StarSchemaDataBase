@@ -1,7 +1,10 @@
 import requests
-from input_data import (user_data, lounge_data, tx_data,
+from input.input_data import ( lounge_data, tx_data,
                         country_data, event_data, amenity_data,
                         airport_data)
+from input.input_data import data_csv_reader
+
+
 
 #authorization
 url = 'http://127.0.0.1:5000/'
@@ -27,15 +30,21 @@ if login_response.status_code == 200:
 
 
     ## Read data
-    response = requests.get(f'{url}/get_columns/User', headers=headers)
+    response = requests.get(f'{url}/get_table/User', headers=headers)
+    # Read columns
+    # response = requests.get(f'{url}/get_columns/User', headers=headers)
     
     #Write data
-    # response = requests.post(f'{url}/upload/user', data=user_data, headers=headers)
+    # user_data = data_csv_reader(file_name='input/input.xlsx')
+    # for record in user_data:
+    #     response = requests.post(f'{url}/upload/user', data=record, headers=headers)
 
 
     if response.status_code == 200:
         print('Successful Request:')
-        print(response.json())
+        for i in response.json()['data']:
+            print(i)
+
     else:
         print('Request Failed:')
         print(response.status_code, response.text)

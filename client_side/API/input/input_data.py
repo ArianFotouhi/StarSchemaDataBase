@@ -2,6 +2,8 @@ from schema_metadata_cl import (user_columns, lounge_columns, tx_columns,
                                         country_columns, event_columns,amenity_columns, 
 
                                         airport_columns)
+import pandas as pd
+
 # user_id = 'user4'
 # lounge_id = 'item4'
 # transaction_id ='trans4'
@@ -99,3 +101,15 @@ airport_data = {
             airport_columns['Region']:'North America',
             airport_columns['ImageURL']:'https://example.com', 
             }
+
+def data_csv_reader(file_name='input/input.xlsx'):
+
+    # Replace 'your_excel_file.xlsx' with the actual file path of your Excel file
+    excel_file = file_name
+
+    # Read the Excel file into a DataFrame
+    df = pd.read_excel(excel_file)
+
+    # Convert the DataFrame into a list of dictionaries
+    data_list = df.to_dict(orient='records')
+    return data_list
