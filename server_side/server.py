@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, session
 from utils.utils import insert_data_generic, fetch_table
 from utils.db_initialize import db_initializer
 import urllib.parse
-from utils.authentication import login, token_required
+from utils.authentication import login, token_required, premium_token_required
 from database.schema_metadata import  (
     user_table_name, lounge_table_name, tx_table_name, 
     country_table_name, event_table_name, amenity_table_name, 
@@ -29,7 +29,7 @@ def user_login():
 
 
 @app.route('/get_table/<table_name>')
-@token_required
+@premium_token_required
 def fetch_data(table_name):
     try:
         fetched_data = fetch_table(table_name)

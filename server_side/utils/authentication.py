@@ -30,6 +30,36 @@ def token_required(f):
             return {'message': 'Token is missing'}, 401
     return decorated_function
 
+
+
+# Custom decorator for high access usernames
+high_access_usernames = ['user1']
+def premium_token_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        token = request.headers.get('Authorization')
+        if token:
+            
+            try:
+                # Verify the token using the secret key
+                data = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+                # Extract the username from the token's payload
+                username = data.get('username')
+           
+                if username in high_access_usernames:
+                    return f(*args, **kwargs)
+                else:
+                    return {'message': 'User does not have premium access privileges'}, 403
+
+            except jwt.InvalidTokenError:
+                return {'message': 'Invalid token'}, 401
+
+        
+        else:
+            return {'message': 'Token is missing'}, 401
+    return decorated_function
+
+
 # Login function
 def login(username, password):
     if username in users and users[username] == password:
@@ -38,3 +68,5 @@ def login(username, password):
         return token
     else:
         return None
+
+
