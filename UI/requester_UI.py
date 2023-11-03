@@ -17,12 +17,12 @@ def login():
         url = 'http://127.0.0.1:5000/authentication'
         
         payload = {
-                    'username':username,
-                    'password':password
+                    'username': username,
+                    'password': password
                    }
         
         response = requests.post(url, data=payload)
-        print('response', response)
+
         data = response.json()  # This will parse the JSON content of the response
         status = data.get('status')
         message = data.get('message')
