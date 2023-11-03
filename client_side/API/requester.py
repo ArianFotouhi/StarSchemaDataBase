@@ -27,7 +27,7 @@ if login_response.status_code == 200:
 
 
     ## Read data
-    response = requests.get(f'{url}/get_table/User', headers=headers)
+    response = requests.get(f'{url}/get_columns/User', headers=headers)
     
     #Write data
     # response = requests.post(f'{url}/upload/user', data=user_data, headers=headers)

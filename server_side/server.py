@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request, session
-from utils.utils import insert_data_generic, fetch_table
+from utils.utils import insert_data_generic, fetch_table, fetch_columns
 from utils.db_initialize import db_initializer
 import urllib.parse
 from utils.authentication import login, token_required, premium_token_required
@@ -29,7 +29,7 @@ def user_login():
 
 
 @app.route('/get_table/<table_name>')
-@premium_token_required
+@token_required
 def fetch_data(table_name):
     try:
         fetched_data = fetch_table(table_name)
@@ -40,6 +40,15 @@ def fetch_data(table_name):
         fetch_info = 'Unsuccessful'
     
     return jsonify({'data':fetch_info})
+
+@app.route('/get_columns/<table_name>')
+@premium_token_required
+def fetch_structure(table_name):
+    structure_info = fetch_columns(table_name)
+    
+    return jsonify({'data':structure_info})
+
+
 
 @app.route('/upload/user', methods=['POST'])
 @token_required

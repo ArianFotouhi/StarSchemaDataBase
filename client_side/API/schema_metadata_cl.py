@@ -32,7 +32,6 @@ lounge_columns = {
                 'LastUpdate':'last_update', 'ImageURL':'image_url','SocialMediaLink':'social_media_link',
                 'Owner':'owner', 'OnSiteTransportation':'onsite_transportation'
                 }
-
 lounge_types = {
             lounge_columns['LoungeID']:'INTEGER PRIMARY KEY AUTOINCREMENT', 
             lounge_columns['Name']:'TEXT', 
@@ -142,3 +141,5 @@ airport_types = {
             airport_columns['Region']:'TEXT',
             airport_columns['ImageURL']:'TEXT', 
                 }
+
+# ------------------------------------------------------------

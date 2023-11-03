@@ -1,4 +1,8 @@
 import sqlite3
+
+from sqlalchemy import inspect
+from sqlalchemy import create_engine
+
 # from database.schema_metadata import ( user_table_name, lounge_table_name, tx_table_name,
 #                               user_columns, lounge_columns, tx_columns)
 
@@ -54,3 +58,15 @@ def fetch_table(table_name):
         ''')
         data = cursor.fetchall()
         return data
+    
+
+def fetch_columns(table_name):
+    engine = create_engine('sqlite:///'+db_name)
+    inspector = inspect(engine)
+    if table_name not in inspector.get_table_names():
+        return 'Error: Table not found'
+    
+    columns = inspector.get_columns(table_name)
+    column_info = [{'name': col['name'], 'type': str(col['type'])} for col in columns]
+
+    return column_info
