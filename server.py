@@ -55,18 +55,20 @@ def user_post():
     # print('type', type(data_dict))
     try:
         if token != 'generatedtoken':
-            raise 'Unathorized access!'
-        insert_data_generic(user_table_name, data)        
+            raise Exception('Unauthorized access!')
+
+        insert_data_generic(user_table_name, data)      
+
 
         fetched_data = fetch_table(user_table_name)
         for record in fetched_data:
             print(record)
         message = 'Successful'
     except Exception as e:
-        message = e
-    finally:
-        print(message)
-        return jsonify({'response':message})
+        message = 'Unauthorized access'
+    
+    print(message)
+    return jsonify({'response':message})
     
 @app.route('/upload/lounge', methods=['POST'])
 def lounge_post():
