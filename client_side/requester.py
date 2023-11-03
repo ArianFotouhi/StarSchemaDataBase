@@ -20,7 +20,7 @@ login_response = requests.post(f'{url}/login', json=login_data)
 
 if login_response.status_code == 200:
     token = login_response.json()['token']
-    print('Login successful. Token obtained:', token)
+    print('Login successful. Token obtained')
     # Set the Authorization header with the JWT token
     headers = {'Authorization': token}
 
