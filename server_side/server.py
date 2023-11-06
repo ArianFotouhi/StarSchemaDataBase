@@ -32,6 +32,7 @@ def user_login():
 @token_required
 def fetch_data(table_name):
     try:
+        table_name = table_name.capitalize()
         fetched_data = fetch_table(table_name)
         fetch_info = []
         for record in fetched_data:
@@ -44,6 +45,7 @@ def fetch_data(table_name):
 @app.route('/get_columns/<table_name>')
 @premium_token_required
 def fetch_structure(table_name):
+    table_name = table_name.capitalize()
     structure_info = fetch_columns(table_name)
     
     return jsonify({'data':structure_info})
@@ -56,8 +58,7 @@ def user_post():
        
     data = request.get_data()
     data = dict(urllib.parse.parse_qsl(data.decode()))
-    # print('data', data_dict)
-    # print('type', type(data_dict))
+    
     try:
 
 
@@ -91,7 +92,7 @@ def lounge_post():
         message = e
     finally:
         print(message)
-        return jsonify({'response':message})
+        return jsonify({'data':message})
 
 @app.route('/upload/transaction', methods=['POST'])
 def tx_post():
