@@ -8,7 +8,7 @@ from input.input_data import data_csv_reader
 
 #authorization
 url = 'http://127.0.0.1:5000/'
-table = 'lounge'
+table = 'user'
 #tables:
 #user, lounge, transaction, country, event, amenity, airport
 
@@ -38,19 +38,19 @@ if login_response.status_code == 200:
 ################################### GET ##################################
     ## Read data
     #1
-    # response = requests.get(f'{url}/get_table/{table}', headers=headers)
+    response = requests.get(f'{url}/get_table/{table}', headers=headers)
     
     ####################################
 
     # Read columns  
     #2.
-    response = requests.get(f'{url}/get_columns/{table}', headers=headers)
+    # response = requests.get(f'{url}/get_columns/{table}', headers=headers)
     
 ################################### POST ##################################
 
     #Write data by file
     # 3.
-    # user_data = data_csv_reader(file_name='input/input.xlsx')
+    # user_data = data_csv_reader(file_name=f'input/input_{table}.xlsx')
     # for record in user_data:
     #     response = requests.post(f'{url}/upload/{table}', data=record, headers=headers)
 

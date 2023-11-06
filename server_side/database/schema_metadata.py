@@ -26,7 +26,7 @@ lounge_columns = {
                 'Coordinates':'coordinates', 'AirportID':'airport_id', 'Description':'description',
                 'TimeZone':'time_zone', 'LoungeType':'lounge_type','LoungeCapacityStatus':'capacity_status',
                 'AccessRequirements':'access_requirements', 'OperatingHours':'operate_hours','Amenities':'amenities',
-                'AccessibilityFeatures':'accessibility_features', 'Capacity':'capacity','EntryFee':'entry_fee',
+                'Events':'events', 'AccessibilityFeatures':'accessibility_features', 'Capacity':'capacity','EntryFee':'entry_fee',
                 'Email':'email', 'Tel':'tel_no','WebsiteURL':'website',
                 'SecurityInfo':'security_info', 'Reservation':'reservation','ActivityStatus':'activity_status',
                 'LastUpdate':'last_update', 'ImageURL':'image_url','SocialMediaLink':'social_media_link',
@@ -47,6 +47,7 @@ lounge_types = {
             lounge_columns['AccessRequirements']:'TEXT',
             lounge_columns['OperatingHours']:'TEXT',
             lounge_columns['Amenities']:'TEXT',
+            lounge_columns['Events']:'TEXT',
             lounge_columns['AccessibilityFeatures']:'TEXT',
             lounge_columns['Capacity']:'INTEGER',
             lounge_columns['EntryFee']:'NUMERIC',
@@ -67,7 +68,8 @@ lounge_types = {
 tx_table_name= 'Transaction'
 tx_columns = {
             'TxID':'tx_id', 'UserID': user_columns['UserID'], 'LoungeID': lounge_columns['LoungeID'],
-            'Status':'tx_status', 'TimeStamp':'time_stamp'
+            'Status':'tx_status', 'ReservationFromDate':'from_date', 'ReservationToDate':'to_date',
+            'TimeStamp':'time_stamp'
                 }
 tx_types = {
             tx_columns['TxID']:'INTEGER PRIMARY KEY AUTOINCREMENT', 
