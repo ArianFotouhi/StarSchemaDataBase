@@ -60,10 +60,7 @@ def user_post():
     data = dict(urllib.parse.parse_qsl(data.decode()))
     
     try:
-
-
         insert_data_generic(user_table_name, data)      
-
 
         fetched_data = fetch_table(user_table_name)
         for record in fetched_data:
@@ -80,7 +77,6 @@ def lounge_post():
     data = request.get_data()
     data = dict(urllib.parse.parse_qsl(data.decode()))
 
-
     try:
         insert_data_generic(lounge_table_name, data)        
 
@@ -89,17 +85,15 @@ def lounge_post():
             print(record)
         message = 'Successful'
     except Exception as e:
-        message = e
-    finally:
-        print(message)
-        return jsonify({'data':message})
+        message = f'Data Upload failed due to: {e}'
+
+    return jsonify({'data':message})
 
 @app.route('/upload/transaction', methods=['POST'])
 def tx_post():
 
     data = request.get_data()
     data = dict(urllib.parse.parse_qsl(data.decode()))
-
 
     try:
         insert_data_generic(tx_table_name, data)        
@@ -109,18 +103,15 @@ def tx_post():
             print(record)
         message = 'Successful'
     except Exception as e:
-        message = e
-    finally:
-        print(message)
-        return jsonify({'response':message})
+        message = f'Data Upload failed due to: {e}'
+    
+    return jsonify({'response':message})
 
 @app.route('/upload/country', methods=['POST'])
 def country_post():
 
     data = request.get_data()
     data = dict(urllib.parse.parse_qsl(data.decode()))
-
-
     try:
         insert_data_generic(country_table_name, data)        
 
@@ -129,17 +120,14 @@ def country_post():
             print(record)
         message = 'Successful'
     except Exception as e:
-        message = e
-    finally:
-        print(message)
-        return jsonify({'response':message})
+        message = f'Data Upload failed due to: {e}'
+    
+    return jsonify({'response':message})
 
 @app.route('/upload/event', methods=['POST'])
 def event_post():
-
     data = request.get_data()
     data = dict(urllib.parse.parse_qsl(data.decode()))
-
 
     try:
         insert_data_generic(event_table_name, data)        
@@ -149,10 +137,9 @@ def event_post():
             print(record)
         message = 'Successful'
     except Exception as e:
-        message = e
-    finally:
-        print(message)
-        return jsonify({'response':message})
+        message = f'Data Upload failed due to: {e}'
+
+    return jsonify({'response':message})
 
 @app.route('/upload/amenity', methods=['POST'])
 def amenity_post():
@@ -168,10 +155,8 @@ def amenity_post():
             print(record)
         message = 'Successful'
     except Exception as e:
-        message = e
-    finally:
-        print(message)
-        return jsonify({'response':message})
+        message = f'Data Upload failed due to: {e}'
+    return jsonify({'response':message})
 
 @app.route('/upload/airport', methods=['POST'])
 def airport_post():
@@ -187,10 +172,9 @@ def airport_post():
             print(record)
         message = 'Successful'
     except Exception as e:
-        message = e
-    finally:
-        print(message)
-        return jsonify({'response':message})
+        message = f'Data Upload failed due to: {e}'
+    
+    return jsonify({'response':message})
 
 if __name__ == "__main__":
     app.run()

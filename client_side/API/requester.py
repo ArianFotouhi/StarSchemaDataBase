@@ -38,7 +38,7 @@ if login_response.status_code == 200:
 ################################### GET ##################################
     ## Read data
     #1
-    # response = requests.get(f'{url}/get_table/{table}', headers=headers)
+    response = requests.get(f'{url}/get_table/{table}', headers=headers)
     
     ####################################
 
@@ -58,9 +58,8 @@ if login_response.status_code == 200:
 
     # Write data by code
     # 4.
-
-    payload = lounge_data
-    response = requests.post(f'{url}/upload/{table}', data=payload, headers=headers)
+    # payload = lounge_data
+    # response = requests.post(f'{url}/upload/{table}', data=payload, headers=headers)
 
     if response.status_code == 200:
         print('Successful Request:')
