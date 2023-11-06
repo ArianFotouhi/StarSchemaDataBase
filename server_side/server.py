@@ -71,6 +71,7 @@ def user_post():
     
     return jsonify({'data': message})
     
+    
 @app.route('/upload/lounge', methods=['POST'])
 def lounge_post():
 

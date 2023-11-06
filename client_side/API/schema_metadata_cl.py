@@ -48,7 +48,7 @@ lounge_types = {
             lounge_columns['Amenities']:'TEXT',
             lounge_columns['AccessibilityFeatures']:'TEXT',
             lounge_columns['Capacity']:'INTEGER',
-            lounge_columns['EntryFee']:'NUMERIC',
+            lounge_columns['EntryFee']:'TEXT',
             lounge_columns['Email']:'TEXT',
             lounge_columns['Tel']:'TEXT',
             lounge_columns['WebsiteURL']:'TEXT',
@@ -65,8 +65,8 @@ lounge_types = {
 # ------------------------------------------------------------
 tx_table_name= 'Transaction'
 tx_columns = {
-            'TxID':'tx_id', 'UserID': user_columns['UserID'], 'LoungeID': lounge_columns['LoungeID'],
-            'Status':'tx_status', 'TimeStamp':'time_stamp'
+                'TxID':'tx_id', 'UserID': user_columns['UserID'], 'LoungeID': lounge_columns['LoungeID'],
+                'Status':'tx_status', 'TimeStamp':'time_stamp'
                 }
 tx_types = {
             tx_columns['TxID']:'INTEGER PRIMARY KEY AUTOINCREMENT', 
@@ -117,7 +117,7 @@ amenity_table_name= 'Amenities'
 amenity_columns = {
                     'AmenityID':'amenity_id', 'AmenityStatus': 'amenity_status', 'AmenityName': 'amenity_name',
                     'ImageURL':'image_url', 'LastUpdate':'last_update'
-                }
+                 }
 amenity_types = {
             amenity_columns['AmenityID']:'INTEGER PRIMARY KEY AUTOINCREMENT', 
             amenity_columns['AmenityStatus']:'TEXT', 
@@ -128,9 +128,10 @@ amenity_types = {
 
 # ------------------------------------------------------------
 airport_table_name= 'Airport'
-airport_columns = {'IATACode':'IATA_code', 'AirportName':'airport_name' ,'Country': 'country', 
-                   'City': 'city', 'Coordinates':'coordinates', 'Region': 'region', 
-                   'ImageURL':'image_url',
+airport_columns = {
+                    'IATACode':'IATA_code', 'AirportName':'airport_name' ,'Country': 'country', 
+                    'City': 'city', 'Coordinates':'coordinates', 'Region': 'region', 
+                    'ImageURL':'image_url',
                     }
 airport_types = {
             airport_columns['IATACode']:'TEXT PRIMARY KEY', 

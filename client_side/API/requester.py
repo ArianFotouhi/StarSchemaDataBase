@@ -16,8 +16,8 @@ table = 'lounge'
 
 
 # User credentials for logging in
-username = 'user2'
-password = 'password2'
+username = 'user1'
+password = 'password1'
 
 # Login to obtain a JWT token
 login_data = {
@@ -38,13 +38,13 @@ if login_response.status_code == 200:
 ################################### GET ##################################
     ## Read data
     #1
-    response = requests.get(f'{url}/get_table/{table}', headers=headers)
+    # response = requests.get(f'{url}/get_table/{table}', headers=headers)
     
     ####################################
 
     # Read columns  
     #2.
-    #response = requests.get(f'{url}/get_columns/{table}', headers=headers)
+    response = requests.get(f'{url}/get_columns/{table}', headers=headers)
     
 ################################### POST ##################################
 
