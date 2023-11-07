@@ -42,6 +42,7 @@ def fetch_data(table_name):
     
     return jsonify({'data':fetch_info})
 
+
 @app.route('/get_columns/<table_name>')
 @premium_token_required
 def fetch_structure(table_name):
@@ -49,7 +50,6 @@ def fetch_structure(table_name):
     structure_info = fetch_columns(table_name)
     
     return jsonify({'data':structure_info})
-
 
 
 @app.route('/upload/user', methods=['POST'])
@@ -73,6 +73,7 @@ def user_post():
     
 
 @app.route('/upload/lounge', methods=['POST'])
+@token_required
 def lounge_post():
 
     data = request.get_data()
@@ -108,7 +109,9 @@ def tx_post():
     
     return jsonify({'data':message})
 
+
 @app.route('/upload/country', methods=['POST'])
+@token_required
 def country_post():
 
     data = request.get_data()
@@ -125,7 +128,9 @@ def country_post():
     
     return jsonify({'data':message})
 
+
 @app.route('/upload/event', methods=['POST'])
+@token_required
 def event_post():
     data = request.get_data()
     data = dict(urllib.parse.parse_qsl(data.decode()))
@@ -142,7 +147,9 @@ def event_post():
 
     return jsonify({'data':message})
 
+
 @app.route('/upload/amenity', methods=['POST'])
+@token_required
 def amenity_post():
 
     data = request.get_data()
@@ -159,7 +166,9 @@ def amenity_post():
         message = f'Data Upload failed due to: {e}'
     return jsonify({'data':message})
 
+
 @app.route('/upload/airport', methods=['POST'])
+@token_required
 def airport_post():
 
     data = request.get_data()
@@ -179,6 +188,7 @@ def airport_post():
 
 
 @app.route('/lounge/image', methods = ['POST', 'GET'])
+@token_required
 def lounge_image():
 
     data = request.get_data()
@@ -188,7 +198,6 @@ def lounge_image():
                                          blob_name= data['blob_name'])
 
     return jsonify({'data': response})
-
 
 
 
