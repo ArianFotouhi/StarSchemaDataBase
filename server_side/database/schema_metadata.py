@@ -68,14 +68,18 @@ lounge_types = {
 tx_table_name= 'Transaction'
 tx_columns = {
             'TxID':'tx_id', 'UserID': user_columns['UserID'], 'LoungeID': lounge_columns['LoungeID'],
-            'Status':'tx_status', 'ReservationFromDate':'from_date', 'ReservationToDate':'to_date',
+            'Status':'tx_status','Amount':'amount','PaymentMethod':'payment_method', 'ReservationFromDate':'from_date', 'ReservationToDate':'to_date',
             'TimeStamp':'time_stamp'
                 }
 tx_types = {
             tx_columns['TxID']:'INTEGER PRIMARY KEY AUTOINCREMENT', 
             tx_columns['UserID']:'INTEGER', 
             tx_columns['LoungeID']:'INTEGER',
+            tx_columns['Amount']:'TEXT',
+            tx_columns['PaymentMethod']:'TEXT',
             tx_columns['Status']:'TEXT', 
+            tx_columns['ReservationFromDate']:'TEXT',
+            tx_columns['ReservationToDate']:'TEXT',
             tx_columns['TimeStamp']:'DATETIME'
             }
 

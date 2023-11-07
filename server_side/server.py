@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request, session
-from utils.utils import insert_data_generic, fetch_table, fetch_columns
+from utils.utils import insert_data_generic, fetch_table, fetch_columns, image_azure_blob_download
 from utils.db_initialize import db_initializer
 import urllib.parse
 from utils.authentication import login, token_required, premium_token_required
@@ -71,7 +71,7 @@ def user_post():
     
     return jsonify({'data': message})
     
-    
+
 @app.route('/upload/lounge', methods=['POST'])
 def lounge_post():
 
@@ -106,7 +106,7 @@ def tx_post():
     except Exception as e:
         message = f'Data Upload failed due to: {e}'
     
-    return jsonify({'response':message})
+    return jsonify({'data':message})
 
 @app.route('/upload/country', methods=['POST'])
 def country_post():
@@ -123,7 +123,7 @@ def country_post():
     except Exception as e:
         message = f'Data Upload failed due to: {e}'
     
-    return jsonify({'response':message})
+    return jsonify({'data':message})
 
 @app.route('/upload/event', methods=['POST'])
 def event_post():
@@ -140,7 +140,7 @@ def event_post():
     except Exception as e:
         message = f'Data Upload failed due to: {e}'
 
-    return jsonify({'response':message})
+    return jsonify({'data':message})
 
 @app.route('/upload/amenity', methods=['POST'])
 def amenity_post():
@@ -157,7 +157,7 @@ def amenity_post():
         message = 'Successful'
     except Exception as e:
         message = f'Data Upload failed due to: {e}'
-    return jsonify({'response':message})
+    return jsonify({'data':message})
 
 @app.route('/upload/airport', methods=['POST'])
 def airport_post():
@@ -175,7 +175,22 @@ def airport_post():
     except Exception as e:
         message = f'Data Upload failed due to: {e}'
     
-    return jsonify({'response':message})
+    return jsonify({'data':message})
+
+
+@app.route('/lounge/image', methods = ['POST', 'GET'])
+def lounge_image():
+
+    data = request.get_data()
+    data = dict(urllib.parse.parse_qsl(data.decode()))
+
+    response = image_azure_blob_download(container_name=data['container'],
+                                         blob_name= data['blob_name'])
+
+    return jsonify({'data': response})
+
+
+
 
 if __name__ == "__main__":
     app.run()

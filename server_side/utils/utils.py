@@ -70,3 +70,44 @@ def fetch_columns(table_name):
     column_info = [{'name': col['name'], 'type': str(col['type'])} for col in columns]
 
     return column_info
+
+
+def image_azure_blob_download(container_name, blob_name):
+    from azure.storage.blob import BlobServiceClient, generate_container_sas, ContainerSasPermissions, ResourceTypes
+    import datetime 
+    
+    import json
+    with open("config/config.json") as config_file:
+        config = json.load(config_file)
+
+    connection_string = config["connection_string"]
+    access_key = config["access_key"]
+    
+    
+
+    # Create a BlobServiceClient
+    blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+
+    # Get the container client
+    container_client = blob_service_client.get_container_client(container_name)
+
+    # Check if the blob exists
+    if container_client.get_blob_client(blob_name).exists():
+        # Define the permissions and expiration time for the SAS token
+        sas_container_permissions = ContainerSasPermissions(read=True)  # Adjust permissions as needed
+        sas_resource_types = ResourceTypes(object=True)
+
+        sas_token = generate_container_sas(
+            container_name=container_name,
+            account_name=blob_service_client.account_name,
+            account_key= access_key,
+            permission=sas_container_permissions,
+            expiry=datetime.datetime.utcnow() + datetime.timedelta(hours=1),  
+            resource_types=sas_resource_types
+        )
+
+        # Construct the URL with the SAS token
+        sas_url = f"https://{container_client.account_name}.blob.core.windows.net/{container_name}/{blob_name}?{sas_token}"
+        return sas_url
+    else:
+        return 'Image not found'

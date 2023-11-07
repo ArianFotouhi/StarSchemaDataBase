@@ -7,8 +7,8 @@ from input.input_data import data_csv_reader
 
 
 #authorization
-url = 'http://127.0.0.1:5000/'
-table = 'user'
+url = 'http://127.0.0.1:5000'
+table = 'airport'
 #tables:
 #user, lounge, transaction, country, event, amenity, airport
 
@@ -38,7 +38,7 @@ if login_response.status_code == 200:
 ################################### GET ##################################
     ## Read data
     #1
-    response = requests.get(f'{url}/get_table/{table}', headers=headers)
+    # response = requests.get(f'{url}/get_table/{table}', headers=headers)
     
     ####################################
 
@@ -60,15 +60,26 @@ if login_response.status_code == 200:
     # 4.
     # payload = lounge_data
     # response = requests.post(f'{url}/upload/{table}', data=payload, headers=headers)
+####################################
+    #Get images
+    # 5.
 
-    if response.status_code == 200:
-        print('Successful Request:')
-        for i in response.json()['data']:
-            print(i)
+    payload = {
+            'container': 'loungeimages',
+            'blob_name': 'lounge1.jpg'
+            }
+    
+    response = requests.post(f'{url}/lounge/image', data=payload, headers=headers)
+    print(response.json()['data'])
+  
+    # if response.status_code == 200:
+    #     print('Successful Request:')
+    #     for i in response.json()['data']:
+    #         print(i)
 
-    else:
-        print('Request Failed:')
-        print(response.status_code, response.text)
+    # else:
+    #     print('Request Failed:')
+    #     print(response.status_code, response.text)
 else:
     print('Login failed:')
     print(login_response.status_code, login_response.text)
