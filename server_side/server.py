@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, session
+from flask import Flask, jsonify, request
 from utils.utils import insert_data_generic, fetch_table, fetch_columns, image_azure_blob_download
 from utils.db_initialize import db_initializer
 import urllib.parse
@@ -6,8 +6,7 @@ from utils.authentication import login, token_required, premium_token_required
 from database.schema_metadata import  (
     user_table_name, lounge_table_name, tx_table_name, 
     country_table_name, event_table_name, amenity_table_name, 
-    airport_table_name,)
-
+    airport_table_name, order_table_name)
 
 #initialize flask 
 app = Flask(__name__)
@@ -16,7 +15,7 @@ app = Flask(__name__)
 db_initializer()
 
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods= ['POST'])
 def user_login():
     data = request.get_json()
     if 'username' in data and 'password' in data:
@@ -52,7 +51,7 @@ def fetch_structure(table_name):
     return jsonify({'data':structure_info})
 
 
-@app.route('/upload/user', methods=['POST'])
+@app.route('/upload/user', methods= ['POST'])
 @token_required
 def user_post():
        
@@ -72,7 +71,7 @@ def user_post():
     return jsonify({'data': message})
     
 
-@app.route('/upload/lounge', methods=['POST'])
+@app.route('/upload/lounge', methods= ['POST'])
 @token_required
 def lounge_post():
 
@@ -91,7 +90,7 @@ def lounge_post():
 
     return jsonify({'data':message})
 
-@app.route('/upload/transaction', methods=['POST'])
+@app.route('/upload/transaction', methods= ['POST'])
 def tx_post():
 
     data = request.get_data()
@@ -110,7 +109,7 @@ def tx_post():
     return jsonify({'data':message})
 
 
-@app.route('/upload/country', methods=['POST'])
+@app.route('/upload/country', methods=  ['POST'])
 @token_required
 def country_post():
 
@@ -129,7 +128,7 @@ def country_post():
     return jsonify({'data':message})
 
 
-@app.route('/upload/event', methods=['POST'])
+@app.route('/upload/event', methods= ['POST'])
 @token_required
 def event_post():
     data = request.get_data()
@@ -148,7 +147,7 @@ def event_post():
     return jsonify({'data':message})
 
 
-@app.route('/upload/amenity', methods=['POST'])
+@app.route('/upload/amenity', methods= ['POST'])
 @token_required
 def amenity_post():
 
@@ -167,7 +166,7 @@ def amenity_post():
     return jsonify({'data':message})
 
 
-@app.route('/upload/airport', methods=['POST'])
+@app.route('/upload/airport', methods= ['POST'])
 @token_required
 def airport_post():
 
@@ -187,14 +186,34 @@ def airport_post():
     return jsonify({'data':message})
 
 
-@app.route('/lounge/image', methods = ['POST', 'GET'])
+@app.route('/upload/order', methods= ['POST'])
 @token_required
+def order_post():
+
+    data = request.get_data()
+    data = dict(urllib.parse.parse_qsl(data.decode()))
+
+    try:
+        insert_data_generic(order_table_name, data)        
+
+        fetched_data = fetch_table(order_table_name)
+        for record in fetched_data:
+            print(record)
+        message = 'Successful'
+    except Exception as e:
+        message = f'Data Upload failed due to: {e}'
+    
+    return jsonify({'data':message})
+
+
+@app.route('/lounge/image', methods= ['POST', 'GET'])
+# @token_required
 def lounge_image():
 
     data = request.get_data()
     data = dict(urllib.parse.parse_qsl(data.decode()))
 
-    response = image_azure_blob_download(container_name=data['container'],
+    response = image_azure_blob_download(container_name= data['container'],
                                          blob_name= data['blob_name'])
 
     return jsonify({'data': response})

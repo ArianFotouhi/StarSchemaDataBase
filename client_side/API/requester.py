@@ -8,9 +8,9 @@ from input.input_data import data_csv_reader
 
 #authorization
 url = 'http://127.0.0.1:5000'
-table = 'airport'
+table = 'order'
 #tables:
-#user, lounge, transaction, country, event, amenity, airport
+#user, lounge, transaction, country, event, amenity, airport, order
 
 
 
@@ -38,7 +38,7 @@ if login_response.status_code == 200:
 ################################### GET ##################################
     ## Read data
     #1
-    # response = requests.get(f'{url}/get_table/{table}', headers=headers)
+    response = requests.get(f'{url}/get_table/{table}', headers=headers)
     
     ####################################
 
@@ -48,7 +48,7 @@ if login_response.status_code == 200:
     
 ################################### POST ##################################
 
-    #Write data by file
+    # Write data by file
     # 3.
     # user_data = data_csv_reader(file_name=f'input/input_{table}.xlsx')
     # for record in user_data:
@@ -64,18 +64,18 @@ if login_response.status_code == 200:
     #Get images
     # 5.
 
-    payload = {
-            'container': 'loungeimages',
-            'blob_name': 'lounge1.jpg'
-            }
+    # payload = {
+    #         'container': 'loungeimages',
+    #         'blob_name': 'lounge1.jpg'
+    #         }
     
-    response = requests.post(f'{url}/lounge/image', data=payload, headers=headers)
-    print(response.json()['data'])
+    # response = requests.post(f'{url}/lounge/image', data=payload, headers=headers)
+    # print(response.json()['data'])
   
-    # if response.status_code == 200:
-    #     print('Successful Request:')
-    #     for i in response.json()['data']:
-    #         print(i)
+    if response.status_code == 200:
+        print('Successful Request:')
+        for i in response.json()['data']:
+            print(i)
 
     # else:
     #     print('Request Failed:')

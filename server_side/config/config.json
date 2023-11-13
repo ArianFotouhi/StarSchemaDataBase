@@ -1,6 +1,6 @@
 
 {
-    "connection_string": "",
-    "access_key":""
+    "connection_string": "DefaultEndpointsProtocol=https;AccountName=loungeimage;AccountKey=dtqX0SMit4v2eHZR8d142jtAwjqbnnbCWH6edz8i8IjEa+kNpn+X6Zs+erSScWl0wsqBFOV20LFj+AStfT0V3g==;EndpointSuffix=core.windows.net",
+    "access_key":"fEhgF0K2+bsq0LbJMZyYxop2CactpRC3TcxCIBEzbeh/qvh9XfTUgfIhxkFJyjWl0z7tRGqPxSbJ+AStN3Flkg=="
 
 }
